@@ -1,0 +1,24 @@
+{%- comment -%}
+  App block that displays the product metafield:
+  namespace: "custom"
+  key: "custom_field"
+{%- endcomment -%}
+
+{%- if product and product.metafields.custom.custom_field != blank -%}
+  <div class="app-custom-field-block" style="padding: 1rem 0;">
+    <strong>Custom field:</strong>
+    <span>{{ product.metafields.custom.custom_field | escape }}</span>
+  </div>
+{%- else -%}
+  <div class="app-custom-field-block--empty" style="color: #999;">
+    No custom field found for this product.
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Custom Field",
+  "target": "section",
+  "settings": []
+}
+{% endschema %}
