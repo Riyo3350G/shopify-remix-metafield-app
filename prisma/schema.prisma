@@ -30,3 +30,16 @@ model Session {
   collaborator  Boolean?  @default(false)
   emailVerified Boolean?  @default(false)
 }
+
+model ProductMetafield {
+  id           Int      @id @default(autoincrement())
+  shop         String
+  productId    String
+  productTitle String
+  customValue  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([shop, productId])
+  @@index([shop])
+}
